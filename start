@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ ! -f /etc/ssh/sshd_config ]; then
+    # Regenerate ssh key per container
+    dpkg-reconfigure openssh-server
+fi
+
+# start services
+supervisord
