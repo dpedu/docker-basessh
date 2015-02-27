@@ -5,5 +5,8 @@ if [ ! -f /etc/ssh/sshd_config ]; then
     dpkg-reconfigure openssh-server
 fi
 
+# Cleanly kill supervisor when container is stopped
+trap 'kill $(jobs -p)' EXIT
+
 # start services
 supervisord
