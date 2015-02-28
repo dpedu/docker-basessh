@@ -24,7 +24,8 @@ COPY sshd.conf /etc/supervisor/conf.d/sshd.conf
 COPY cron.conf /etc/supervisor/conf.d/cron.conf
 
 COPY start /start
-RUN chmod +x /start
+RUN chmod +x /start ; mkdir /start.d
+COPY regenerate-ssh /start.d/regenerate-ssh
 
 # Expose ssh
 EXPOSE 22
