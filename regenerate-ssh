@@ -1,10 +1,15 @@
 #! /bin/bash
 
-# If sshd has no config, generate new keys + config
-if [ ! -f /etc/ssh/sshd_config ]; then
-    # Regenerate ssh key per container
-    dpkg-reconfigure openssh-server
+#!/bin/sh
+
+# Regenerate ssh key per container
+
+if [ ! -f "/etc/ssh/ssh_host_rsa_key" ]; then
+  # Regen keys
+  ssh-keygen -A
+
+  # Move keys to keys dir
+  mv /etc/ssh/ssh_host_* /etc/ssh/keys/
 fi
 
-# This only runs once, so remove this startup script
 rm /start.d/regenerate-ssh
