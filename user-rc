@@ -1,5 +1,5 @@
 #!/bin/bash
 
-if [ -f ~admin/.userrc ]; then
+if [ -f ~admin/persist/.userrc ]; then
     ~admin/persist/.userrc
 fi

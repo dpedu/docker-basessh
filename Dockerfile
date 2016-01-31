@@ -37,4 +37,4 @@ EXPOSE 22
 VOLUME /home/admin/persist
 
 # Set boot command
-ENTRYPOINT /start
+ENTRYPOINT ["/start"]
