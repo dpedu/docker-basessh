@@ -9,7 +9,8 @@ RUN useradd --create-home --groups sudo admin && \
     rm -rf /etc/ssh/*_key* && \
     mkdir /etc/ssh/keys && \
     sed -i -E 's/#?\s?HostKey \/etc\/ssh\//HostKey \/etc\/ssh\/keys\//' /etc/ssh/sshd_config && \
-    su -c "mkdir ~/.ssh" admin
+    su -c "mkdir ~/.ssh" admin && \
+    echo 'admin ALL=(ALL) NOPASSWD:ALL' | tee /etc/sudoers.d/admin
 
 COPY authorized_keys /home/admin/.ssh/authorized_keys
 
